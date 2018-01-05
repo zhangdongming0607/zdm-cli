@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "commander": "2.9.0",
-    "zdm_cli": "^0.0.3",
     "async": "^2.6.0",
     "consolidate": "^0.15.0",
     "download-git-repo": "^1.0.1",
