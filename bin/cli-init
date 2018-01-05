@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+
+const path = require('path')
+const download = require('download-git-repo')
+const program = require('commander')
+const exists = require('fs').existsSync
+const rm = require('rimraf').sync
+const ora = require('ora')
+const render = require('consolidate').handlebars.render
+const home = require('user-home')
+const generate = require('../lib/generate')
+const localPath = require('../lib/local-path')
+
+const temp_dir = path.join(process.cwd(), 'template')
+const dest_dir = path.join(process.cwd(), 'src')
+
+program
+  .usage('<template-name> [project-name]')
+  .option('-c, --clone', 'use git clone')
+  .option('--offline', 'use cached template')
+
+
+/**
+ * Help.
+ */
+
+function help () {
+  program.parse(process.argv)
+  if (program.args.length < 1) return program.help()
+}
+help()
+
+let template = program.args[0]
+const dirName = path.join(process.cwd(), program.args[1] || "cli-src")
+if(template) {
+  if(template.includes('#')) downloadFromRepo(template)
+}
+
+function downloadFromRepo(template) {
+  const spinner = ora('downloading template')
+  if(exists(temp_dir)) {
+      console.log('rm origin files in down')
+      rm(temp_dir)
+    }
+  spinner.start()
+
+  download(template.replace('#', '/'), temp_dir, {clone: true}, function (err) {
+    spinner.stop()
+    generate(temp_dir, template, dirName, err => {
+       console.log(err ? 'Error' : 'Success')
+       if(!err) {
+          rm(temp_dir)
+          console.log('run npm install and enjoy your development')
+       }
+      })
+  })
+}
