@@ -1,6 +1,6 @@
 {
   "name": "zdm_cli",
-  "version": "1.0.0",
+  "version": "0.0.3",
   "main": "index.js",
   "license": "MIT",
   "bin": {
@@ -8,9 +8,8 @@
     "cli-init": "bin/cli-init"
   },
   "dependencies": {
-    "commander": "2.9.0"
-  },
-  "devDependencies": {
+    "commander": "2.9.0",
+    "zdm_cli": "^0.0.3",
     "async": "^2.6.0",
     "consolidate": "^0.15.0",
     "download-git-repo": "^1.0.1",
