@@ -1,7 +1,7 @@
 ### zdm_cli
 随便写的一个脚手架   
 参考（抄）了很多 vue-cli 的代码    
-感谢尤大，虽然我暂时只用react~~
+感谢尤大~~
 
 #### 安装
 ```
@@ -22,3 +22,5 @@ cli init <remote-template>#<your-project-dirname>
 cli init zhangdongming1989#webpack-template <your-dirname>
 
 ```
+
+最近会两周的计划工作包括：添加本地模板、替换模板引擎。。
