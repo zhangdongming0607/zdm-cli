@@ -11,16 +11,27 @@ npm install -g zdm_cli
 ```
 cli 查看可用命令
 
-cli init <remote-template>#<your-project-dirname>
+cli init [path] [project-name] <Options>
 
 ```
+path：模板的本地路径或 github repo 的地址
+project-name 生成的项目文件名
+Options 本地模板（--offline）还是线上模板（默认） 
 
 目前支持的暂时只有 https://github.com/zhangdongming1989/webpack-template
 这一个模板
 所以想体验请用命令
+本地：
 ```
-cli init zhangdongming1989#webpack-template <your-dirname>
+cli init https://github.com/zhangdongming1989/webpack-template my_project
+
+```
+或   
+远程：
+
+```
+cli init <存放上面这个模板的本地路径> my_project --offline
 
 ```
 
-最近会两周的计划工作包括：添加本地模板、替换模板引擎。。
+已经支持使用本地模板，但是模板引擎还没有换。。。

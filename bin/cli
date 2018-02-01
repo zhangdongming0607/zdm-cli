@@ -3,5 +3,6 @@
 require('commander')
   .version(require('../package').version)
   .usage('<command> [options]')
-  .command('init', 'generate a new project from a template')
+  .command('init <github_repo>', 'generate a new project by a remote template')
+  .command('init --offline <path>', 'generate using an offline template')
   .parse(process.argv)
